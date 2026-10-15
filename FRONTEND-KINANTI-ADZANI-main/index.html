@@ -1,13 +1,158 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Tugas 1A — buka Console (F12)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Katalog Tanaman Hias</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-  <p>Semua hasil ada di <strong>Console</strong>: tekan F12 → tab Console.</p>
-  <!-- Jangan ubah urutan: data.js harus dimuat sebelum logika.js -->
-  <script src="data.js"></script>
-  <script src="logika.js"></script>
+<body class="bg-[#F4F7F4] text-emerald-950 font-sans">
+
+    <!-- Header & Navbar menggunakan Flexbox -->
+    <header class="bg-white shadow-sm sticky top-0 z-10 border-b border-emerald-100">
+        <!-- KOMENTAR ALASAN 1: Flexbox dipakai di navbar agar logo di kiri dan tautan menu di kanan terpisah secara rapi dan fleksibel di berbagai ukuran layar -->
+        <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="font-bold text-xl text-emerald-700 flex items-center gap-2">
+                🌱 PlantHouse
+            </a>
+            <div class="space-x-6 text-sm font-medium">
+                <a href="#" class="hover:text-emerald-600 transition">Beranda</a>
+                <a href="#" class="hover:text-emerald-600 transition">Koleksi Tanaman</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-10">
+        <!-- Judul Utama (Tepat satu h1) -->
+        <section class="mb-10 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-emerald-900 mb-2">Katalog Tanaman Hias</h1>
+            <p class="text-emerald-700 text-sm md:text-base">Temukan berbagai koleksi tanaman indoor dan outdoor terbaik untuk mempercantik ruanganmu.</p>
+        </section>
+
+        <!-- Bagian Daftar Kartu -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-6 text-emerald-900">Daftar Pilihan Tanaman</h2>
+            
+            <!-- KOMENTAR ALASAN 2: Grid dipilih untuk daftar kartu agar tata letaknya otomatis tersusun rapi dalam bentuk kolom yang konsisten menyesuaikan lebar layar -->
+            <!-- KOMENTAR ALASAN 3: Pendekatan Mobile-First diterapkan: 1 kolom di HP (grid-cols-1), 2 kolom di tablet (md:grid-cols-2), dan 3 kolom di laptop (lg:grid-cols-3) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Kartu 1: Monstera Deliciosa -->
+                <article class="bg-white rounded-xl shadow-sm border border-emerald-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="h-48 bg-emerald-50 overflow-hidden">
+                            <img src="images/monstera.jpg" alt="Tanaman Monstera Deliciosa dalam pot hijau" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-medium">Indoor</span>
+                            <h3 class="text-xl font-bold mt-3 text-emerald-950">Monstera Deliciosa</h3>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-3 border-t border-emerald-50 flex justify-between items-center text-sm">
+                        <span class="text-emerald-700">Harga:</span>
+                        <span class="font-bold text-emerald-900">Rp 75.000</span>
+                    </div>
+                </article>
+
+                <!-- Kartu 2: Sirih Gading -->
+                <article class="bg-white rounded-xl shadow-sm border border-emerald-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="h-48 bg-emerald-50 overflow-hidden">
+                            <img src="https://asset.kompas.com/crops/N5klk5bsILLYSxFfT3tihk8A2hU=/13x5:1000x663/1200x800/data/photo/2022/07/29/62e3d7c6aa0a2.jpg" alt="Tanaman gantung Sirih Gading dengan daun hijau segar" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-medium">Indoor</span>
+                            <h3 class="text-xl font-bold mt-3 text-emerald-950">Sirih Gading</h3>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-3 border-t border-emerald-50 flex justify-between items-center text-sm">
+                        <span class="text-emerald-700">Harga:</span>
+                        <span class="font-bold text-emerald-900">Rp 15.000</span>
+                    </div>
+                </article>
+
+                <!-- Kartu 3: Lidah Mertua -->
+                <article class="bg-white rounded-xl shadow-sm border border-emerald-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="h-48 bg-emerald-50 overflow-hidden">
+                            <img src="https://www.socfindoconservation.co.id/asset/plant/804-1-dracaena-trifasciata.jpg" alt="Tanaman Lidah Mertua tegak di dalam pot minimalis" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-medium">Indoor</span>
+                            <h3 class="text-xl font-bold mt-3 text-emerald-950">Lidah Mertua</h3>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-3 border-t border-emerald-50 flex justify-between items-center text-sm">
+                        <span class="text-emerald-700">Harga:</span>
+                        <span class="font-bold text-emerald-900">Rp 25.000</span>
+                    </div>
+                </article>
+
+                <!-- Kartu 4: Bougenville -->
+                <article class="bg-white rounded-xl shadow-sm border border-emerald-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="h-48 bg-emerald-50 overflow-hidden">
+                            <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c69a5c4456aa41578e2e0a1bf1c787f7~tplv-aphluv4xwc-resize-jpeg:700:0.jpeg" alt="Tanaman bunga Bougenville warna cerah di luar ruangan" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs bg-lime-100 text-lime-800 px-2.5 py-1 rounded-full font-medium">Outdoor</span>
+                            <h3 class="text-xl font-bold mt-3 text-emerald-950">Bougenville</h3>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-3 border-t border-emerald-50 flex justify-between items-center text-sm">
+                        <span class="text-emerald-700">Harga:</span>
+                        <span class="font-bold text-emerald-900">Rp 35.000</span>
+                    </div>
+                </article>
+
+                <!-- Kartu 5: Kaktus Koboi -->
+                <article class="bg-white rounded-xl shadow-sm border border-emerald-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="h-48 bg-emerald-50 overflow-hidden">
+                            <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//89/MTA-22730119/no-brand_no-brand_full01.jpg" alt="Tanaman Kaktus Koboi hijau tinggi di dalam pot" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs bg-lime-100 text-lime-800 px-2.5 py-1 rounded-full font-medium">Outdoor</span>
+                            <h3 class="text-xl font-bold mt-3 text-emerald-950">Kaktus Koboi</h3>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-3 border-t border-emerald-50 flex justify-between items-center text-sm">
+                        <span class="text-emerald-700">Harga:</span>
+                        <span class="font-bold text-emerald-900">Rp 50.000</span>
+                    </div>
+                </article>
+
+                <!-- Kartu 6: Tabebuya -->
+                <article class="bg-white rounded-xl shadow-sm border border-emerald-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="h-48 bg-emerald-50 overflow-hidden">
+                            <img src="images/tabebuya.jpg" alt="Tanaman Tabebuya" class="w-full h-full object-cover">
+                          </div>
+                        <div class="p-5">
+                            <span class="text-xs bg-lime-100 text-lime-800 px-2.5 py-1 rounded-full font-medium">Outdoor</span>
+                            <h3 class="text-xl font-bold mt-3 text-emerald-950">Tabebuya</h3>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-3 border-t border-emerald-50 flex justify-between items-center text-sm">
+                        <span class="text-emerald-700">Harga:</span>
+                        <span class="font-bold text-emerald-900">Rp 65.000</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-emerald-100 mt-16 py-6 text-center text-sm text-emerald-800">
+        <!-- KOMENTAR ALASAN 4: Tag footer digunakan karena elemen ini secara semantik paling tepat untuk menampung bagian hak cipta dan informasi penutup situs -->
+        <p>&copy; 2026 PlantHouse. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <!-- Script JavaScript Tugas -->
+    <script src="data.js"></script>
+    <script src="logika.js"></script>
+
 </body>
 </html>
