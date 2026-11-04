@@ -1,74 +1,19 @@
-# Proyek Frontend — Metro Institute Season 2
+# Katalog Tanaman Hias (PlantHouse) — Tugas 3 React Frontend
 
-Repositori ini adalah **produk kamu sendiri** yang akan terus dikembangkan selama kelas Frontend:
-dari data dan logika, menjadi halaman web, aplikasi React, sampai online di internet.
+Proyek web katalog tanaman hias interaktif yang dibangun menggunakan **Vite, React, dan Tailwind CSS** sebagai bagian dari kelas Frontend Metro Institute.
 
----
+## Nama & Identitas
+* **Nama:** Kinanti Adzani
+* **Tema Katalog:** PlantHouse (Tanaman Hias Indoor & Outdoor)
 
-## Mulai di sini (sekali saja)
+## Fitur Utama
+1. **Komponen Modular:** Dibagi menjadi beberapa komponen terpisah (`Navbar`, `Kartu`, `TombolFilter`) untuk menjaga kerapian kode.
+2. **Filter Kategori Dinamis:** Pengguna dapat menyaring tanaman berdasarkan kategori (Semua, Indoor, Outdoor) menggunakan React `useState`.
+3. **Indikator Jumlah Item:** Menampilkan jumlah item secara dinamis dan akurat sesuai hasil filter.
+4. **Desain Responsif:** Dibangun menggunakan utilitas kelas dari Tailwind CSS.
 
-1. Klik tombol hijau **Use this template** → **Create a new repository**.
-2. Beri nama repositori, misalnya `frontend-namakamu`, lalu klik **Create repository**.
-3. Di repositori barumu: **Settings → Collaborators → Add people** → tambahkan **`samythh`** (mentor).
-4. Ambil repositori ke laptop:
-
-```bash
-git config --global user.name "Nama Lengkap"
-git config --global user.email "email-github@contoh.com"
-
-git clone https://github.com/<username-kamu>/<nama-repo>.git
-cd <nama-repo>
-```
-
-> Pastikan yang di-clone adalah **repositori milikmu**, bukan repositori template ini.
-
----
-
-## Cara mengerjakan & mengumpulkan tugas
-
-Setiap tugas dikerjakan di **branch** tersendiri dan dikumpulkan lewat **Pull Request**.
-
-```bash
-# 1. Buat branch untuk tugas
-git checkout -b tugas1a-namakamu
-
-# 2. Kerjakan tugasnya, lalu simpan & kirim
-git add .
-git commit -m "feat: data tema dan fungsi logika"
-git push -u origin tugas1a-namakamu
-```
-
-3. Buka repositorimu di GitHub → klik **Compare & pull request** → judul `Tugas 1A — Nama Kamu` → **Create pull request**.
-
-Kesulitan memakai terminal? Gunakan **GitHub Desktop** sebagai alternatif.
-
----
-
-## Isi repositori
-
-| File | Kegunaan |
-|---|---|
-| `index.html` | Penghubung file JavaScript ke browser. Buka file ini, lalu tekan **F12 → Console** |
-| `data.js` | Data tema produkmu (Tugas 1A) |
-| `logika.js` | Fungsi-fungsi logika (Tugas 1A) |
-| `docs/tugas-1a.md` | Soal dan kriteria penilaian Tugas 1A |
-
----
-
-## Aturan main
-
-- **Kode tugas ditulis sendiri.** Boleh bertanya ke mentor, teman, atau referensi lain untuk memahami konsep.
-- **Siap menjelaskan setiap baris kode.** Mentor akan menanyakan alasan di balik kodemu secara acak.
-- **Langkah dulu, kode belakangan.** Tulis langkah penyelesaian sebagai komentar sebelum menulis kode.
-
-## Kalau macet
-
-Tanyakan di grup dengan format:
-
-```
-1. Yang saya coba   : ...
-2. Yang saya harap  : ...
-3. Yang terjadi     : ... (+ screenshot error)
-4. Yang sudah dicoba: ...
-```
-Pengerjaan Tugas 1A - Kinanti Adzani
+## Cara Menjalankan Proyek di Lokal
+1. Clone repositori ini ke komputermu.
+2. Buka terminal di folder proyek, lalu instal dependensi:
+   ```bash
+   npm install
