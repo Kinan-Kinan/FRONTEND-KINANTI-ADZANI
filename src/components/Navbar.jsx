@@ -1,4 +1,4 @@
-// Komentar alasan: Komponen Navbar menampilkan logo dan menu navigasi dengan tema warna hijau tua PlantHouse
+// Komentar alasan: Navbar menggunakan tema hijau tua khas PlantHouse dengan menu Koleksi dan Kontak sesuai desain awal
 function Navbar() {
   return (
     <header className="bg-emerald-900 text-white shadow-md">
@@ -7,8 +7,8 @@ function Navbar() {
           <span>🌱 PlantHouse</span>
         </div>
         <div className="flex gap-6 text-sm font-medium text-emerald-100">
-          <span className="hover:underline cursor-pointer">Beranda</span>
-          <span className="hover:underline cursor-pointer">Koleksi Tanaman</span>
+          <span className="hover:text-white cursor-pointer">Koleksi</span>
+          <span className="hover:text-white cursor-pointer">Kontak</span>
         </div>
       </div>
     </header>
