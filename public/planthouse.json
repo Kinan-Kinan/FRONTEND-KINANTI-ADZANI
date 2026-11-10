@@ -1,0 +1,8 @@
+[
+  { "id": 1, "nama": "Monstera Deliciosa", "kategori": "Indoor", "harga": 75000, "tersedia": true, "gambar": "images/monstera.jpg" },
+  { "id": 2, "nama": "Sirih Gading", "kategori": "Indoor", "harga": 15000, "tersedia": true, "gambar": "images/sirih-gading.png" },
+  { "id": 3, "nama": "Lidah Mertua", "kategori": "Indoor", "harga": 25000, "tersedia": true, "gambar": "images/lidah-mertua.png" },
+  { "id": 4, "nama": "Bougenville", "kategori": "Outdoor", "harga": 35000, "tersedia": true, "gambar": "images/bougenville.png" },
+  { "id": 5, "nama": "Kaktus Koboi", "kategori": "Outdoor", "harga": 50000, "tersedia": true, "gambar": "images/kaktus-koboi.png" },
+  { "id": 6, "nama": "Tabebuya", "kategori": "Outdoor", "harga": 65000, "tersedia": false, "gambar": "images/tabebuya.jpg" }
+]
