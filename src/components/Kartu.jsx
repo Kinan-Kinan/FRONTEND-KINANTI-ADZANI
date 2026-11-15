@@ -1,5 +1,5 @@
-// Komentar alasan: Komponen Kartu menyusun struktur visual tanaman, gambar, status ketersediaan, dan warna tema hijau tua sesuai desain asli
-function Kartu({ item }) {
+// Komentar alasan: Komponen Kartu menyusun struktur visual tanaman, gambar, status ketersediaan, dan tombol hapus sesuai desain asli
+function Kartu({ item, onHapus }) {
   // Menentukan label dan warna badge berdasarkan status ketersediaan (true/false)
   const statusTeks = item.tersedia ? "Tersedia" : "Habis";
   const statusWarna = item.tersedia 
@@ -34,11 +34,21 @@ function Kartu({ item }) {
           <h3 className="font-bold text-lg text-emerald-950 mb-4">{item.nama}</h3>
         </div>
 
-        <div className="flex items-center justify-between pt-3 border-t border-emerald-50">
-          <span className="text-sm text-emerald-700 font-medium">Harga:</span>
-          <span className="text-base font-bold text-emerald-950">
-            Rp {item.harga.toLocaleString("id-ID")}
-          </span>
+        <div>
+          <div className="flex items-center justify-between pt-3 border-t border-emerald-50 mb-3">
+            <span className="text-sm text-emerald-700 font-medium">Harga:</span>
+            <span className="text-base font-bold text-emerald-950">
+              Rp {item.harga.toLocaleString("id-ID")}
+            </span>
+          </div>
+
+          {/* Tombol Hapus */}
+          <button
+            onClick={onHapus}
+            className="w-full bg-red-50 text-red-600 hover:bg-red-100 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer"
+          >
+            Hapus
+          </button>
         </div>
       </div>
     </div>
