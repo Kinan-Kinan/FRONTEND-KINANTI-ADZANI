@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar.jsx";
 import Kartu from "./components/Kartu.jsx";
 import TombolFilter from "./components/TombolFilter.jsx";
+import FormTambah from "./components/FormTambah.jsx";
+
+// Alamat API untuk json-server
+const ALAMAT_API = "http://localhost:3001/planthouse";
 
 function App() {
   // State untuk menyimpan daftar item dari server JSON
@@ -17,10 +21,9 @@ function App() {
   useEffect(() => {
     async function ambilData() {
       try {
-        // Fetch data dari file JSON di folder public
-        const respons = await fetch("/planthouse.json");
+        // Fetch data dari json-server
+        const respons = await fetch(ALAMAT_API);
         
-        // Periksa apakah respons dari server berhasil (ok)
         if (!respons.ok) {
           throw new Error("Gagal mengambil data dari server");
         }
@@ -32,38 +35,86 @@ function App() {
         setStatus("berhasil");
       } catch (error) {
         console.error(error);
-        // Komentar alasan: status diubah jadi gagal jika ada masalah pada jaringan atau file JSON
+        // Komentar alasan: status diubah jadi gagal jika ada masalah pada jaringan atau server
         setStatus("gagal");
       }
     }
     ambilData();
-    
-    // Komentar alasan: [] ditaruh di akhir useEffect supaya data diambil sekali saja saat halaman pertama tampil
   }, []);
+
+  // Fungsi tambah item dengan metode POST
+  async function tambahItem(itemBaru) {
+    try {
+      const respons = await fetch(ALAMAT_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(itemBaru),
+      });
+
+      if (!respons.ok) {
+        throw new Error("Gagal menambah data ke server");
+      }
+
+      const itemTersimpan = await respons.json();
+
+      // Komentar alasan: array baru digunakan (bukan push), supaya React melihat daftarnya berubah dan menggambar ulang komponen
+      setDaftarItem([...daftarItem, itemTersimpan]);
+      return true;
+    } catch (error) {
+      console.error(error);
+      alert("Gagal menambahkan tanaman. Pastikan json-server menyala.");
+      return false;
+    }
+  }
+
+  // Fungsi hapus item dengan metode DELETE
+  async function hapusItem(item) {
+    // Komentar alasan: confirm digunakan dulu supaya pengguna memastikan pilihan, karena item yang dihapus tidak bisa dikembalikan
+    const konfirmasi = window.confirm(`Apakah Anda yakin ingin menghapus "${item.nama}"?`);
+    if (!konfirmasi) return;
+
+    try {
+      const respons = await fetch(`${ALAMAT_API}/${item.id}`, {
+        method: "DELETE",
+      });
+
+      if (!respons.ok) {
+        throw new Error("Gagal menghapus data dari server");
+      }
+
+      // Memperbarui daftar state dengan .filter setelah berhasil dihapus di server
+      setDaftarItem(daftarItem.filter((d) => d.id !== item.id));
+    } catch (error) {
+      console.error(error);
+      alert("Gagal menghapus tanaman dari server.");
+    }
+  }
 
   // Menyaring data berdasarkan kategori dan kata kunci pencarian secara bersamaan
   const daftarTampil = daftarItem.filter((item) => {
     const cocokKategori = kategoriAktif === "Semua" || item.kategori === kategoriAktif;
-    
-    // Komentar alasan: toLowerCase digunakan di dua sisi supaya pencarian tidak membedakan huruf besar dan kecil (case-insensitive)
     const cocokKataKunci = item.nama.toLowerCase().includes(kataKunci.toLowerCase());
-    
     return cocokKategori && cocokKataKunci;
   });
 
-  // Menentukan tampilan konten berdasarkan tiga keadaan (memuat, gagal, kosong, atau grid kartu)
+  // Menentukan tampilan konten berdasarkan keadaan
   let isi;
   if (status === "memuat") {
     isi = <p className="text-center py-10 text-emerald-800">Sedang memuat data tanaman...</p>;
   } else if (status === "gagal") {
-    isi = <p className="text-center py-10 text-red-600 font-semibold">Gagal memuat data dari server. Silakan periksa kembali.</p>;
+    isi = <p className="text-center py-10 text-red-600 font-semibold">Gagal memuat data dari server. Pastikan json-server sudah menyala.</p>;
   } else if (daftarTampil.length === 0) {
     isi = <p className="text-center py-10 text-gray-500">Tidak ada tanaman yang cocok dengan pencarian.</p>;
   } else {
     isi = (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {daftarTampil.map((item) => (
-          <Kartu key={item.id} item={item} />
+          <Kartu 
+            key={item.id} 
+            item={item} 
+            // Mengirim onHapus dengan fungsi panah agar tidak tereksekusi otomatis saat render
+            onHapus={() => hapusItem(item)} 
+          />
         ))}
       </div>
     );
@@ -75,7 +126,6 @@ function App() {
         <Navbar />
 
         <main className="max-w-6xl mx-auto px-6 py-10">
-          {/* Bagian Judul Rata Tengah (text-center & mx-auto) */}
           <section className="text-center mb-10">
             <h1 className="text-3xl font-extrabold text-emerald-950 mb-2">Katalog Tanaman Hias</h1>
             <p className="text-emerald-800 max-w-xl mx-auto text-sm sm:text-base">
@@ -84,6 +134,9 @@ function App() {
           </section>
 
           <section>
+            {/* Form Tambah Tanaman */}
+            <FormTambah onTambah={tambahItem} />
+
             {/* Kotak Pencarian */}
             <div className="mb-6">
               <input
@@ -121,7 +174,7 @@ function App() {
               </p>
             )}
 
-            {/* Konten berdasarkan tiga keadaan atau grid kartu */}
+            {/* Konten Grid Kartu */}
             {isi}
           </section>
         </main>
